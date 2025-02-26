@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerar tabela Sofia</title>
+    <title>Upsell monetizze teste</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 
@@ -16,10 +16,9 @@
     <div class="container-fluid">
         <div class="row mt-5">
             <div class="col-md-4 offset-md-4">
-                <div class="input-group mb-3">
-                    <input type="number" id="input-number" class="form-control" placeholder="Numero" aria-label="Numero" aria-describedby="button-create">
-                    <button class="btn btn-outline-secondary" type="button" id="button-create">Gerar tabela</button>
-                </div>
+                <p>
+                    Upsell Monetizze TESTE
+                </p>
             </div>
         </div>
 
@@ -30,143 +29,5 @@
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script>
-    window.onload = function() {
-        init();
-    };
-
-    function init() {
-        console.log('dener');
-        load();
-    }
-
-    function load() {
-        var el = document.getElementById('button-create');
-        el.addEventListener('click', generateTable, false);
-    }
-
-    function generateTable() {
-        var elNumber = document.getElementById('input-number');
-        var elTable = document.getElementById('table');
-        var elButton = document.getElementById('button-create');
-        var table = [];
-
-        toggleButton(elButton);
-        
-        if (elNumber) {
-            var number = parseInt(elNumber.value);
-            if (number > 0) {
-                table = calculator(number)
-    
-                createTable(elTable, table);
-            } else {
-                alert('O numero tem que ser maior que 0');
-            }
-        }
-
-        toggleButton(elButton);
-    }
-
-    function toggleButton(elButton, text = 'Aguarde...') {
-        var oldText = elButton.textContent;
-
-        elButton.textContent = text;
-
-        if (! elButton.hasAttribute('disabled')) {
-            elButton.setAttribute('disabled', true);
-        } else {
-            elButton.removeAttribute('disabled');
-        }
-
-        elButton.textContent = oldText;
-    }
-
-    function getColor(){
-        var colorClass = [
-            'table-primary',
-            'table-secondary',
-            'table-success',
-            'table-danger',
-            'table-warning',
-            'table-info',
-            'table-light',
-            //'table-dark',
-        ];
-
-        return colorClass[Math.floor((Math.random() * colorClass.length))];
-    }
-
-    function createTable(element, dataTable) {
-        var table = document.createElement('table');
-        table.classList.add('table', 'table-bordered', 'table-hover', 'table-sm');
-
-        var tableHead = document.createElement('thead');
-
-        var headRow = document.createElement('tr');
-        var headCell = document.createElement('th');
-        headCell.classList.add('text-center');
-        headCell.appendChild(document.createTextNode('#'));
-        headRow.appendChild(headCell);
-
-        dataTable.forEach(function(rowData, index, arr) {
-            var headCell = document.createElement('th');
-            headCell.classList.add('text-center');
-            headCell.appendChild(document.createTextNode(index + 1));
-            headRow.appendChild(headCell);
-        });
-        tableHead.appendChild(headRow);
-
-        var tableBody = document.createElement('tbody');
-
-        dataTable.forEach(function(rowData) {
-            var row = document.createElement('tr');
-
-            var color = getColor();
-            //row.classList.add('text-center', color);
-            
-            rowData.forEach(function(cellData, index) {
-                if (index === 0) {
-                    var headCell = document.createElement('th');
-                    headCell.classList.add('text-center');
-                    headCell.appendChild(document.createTextNode(cellData))
-                    row.appendChild(headCell);
-                }
-                
-                //var color = getColor();
-
-                var cell = document.createElement('td');
-                cell.classList.add('text-center', color);
-                cell.appendChild(document.createTextNode(cellData));
-                row.appendChild(cell);
-            });
-
-            tableBody.appendChild(row);
-        });
-
-        table.appendChild(tableHead);
-        table.appendChild(tableBody);
-        element.innerHTML = '';
-        element.appendChild(table);
-    }
-
-    function calculator(number = 0) {
-        var matriz = [];
-
-        if (number > 0) {
-            var x = number;
-
-            for (var i = 1; x >= i; i++) {
-                var row = [];
-
-                for (var j = 1; x >= j; j++) {
-                    row.push(i * j);
-                }
-
-                matriz.push(row);
-            }
-        }
-        return matriz;
-    }
-    
-</script>
+<script type="text/javascript" src="http://monetizze.devs/upsell_incorporado.php"></script>
 </html>
